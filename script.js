@@ -74,6 +74,31 @@ function hexToBin(n) {
     return result;
 }
 
+/**
+ * Example:
+ *     in : "00001111"
+ *     out: "0000 1111"
+ * 
+ *     in : "FFFFAAAA"
+ *     out: "FFFF AAAA"
+ */
+function formatOutput(s) {
+    var result = "";
+
+    for (var i = s.length; i > 0; i -= 4) {
+
+        var nibble = s.substring(i - 4, i);
+
+        while (nibble.length < 4) {
+            nibble = "0" + nibble;
+        }
+
+        result = nibble + " " + result;
+    }
+
+    return result;
+}
+
 function clearOutput() {
     document.getElementById("decResult").value = "";
     document.getElementById("binResult").value = "";
@@ -85,12 +110,13 @@ function showResults() {
     var base = document.getElementById("base").value;
 
     switch (base) {
+
         case "dec":
             var re = new RegExp("^[0-9]+$");
             if (re.test(number)) {
                 document.getElementById("decResult").value = number;
-                document.getElementById("binResult").value = decToBin(number);
-                document.getElementById("hexResult").value = decToHex(number);
+                document.getElementById("binResult").value = formatOutput(decToBin(number));
+                document.getElementById("hexResult").value = formatOutput(decToHex(number));
             } else {
                 clearOutput();
             }
@@ -100,8 +126,8 @@ function showResults() {
             var re = new RegExp("^[0-1]+$");
             if (re.test(number)) {
                 document.getElementById("decResult").value = binToDec(number);
-                document.getElementById("binResult").value = number;
-                document.getElementById("hexResult").value = binToHex(number);
+                document.getElementById("binResult").value = formatOutput(number);
+                document.getElementById("hexResult").value = formatOutput(binToHex(number));
             } else {
                 clearOutput();
             }
@@ -111,8 +137,8 @@ function showResults() {
             var re = new RegExp("^[0-9a-fA-F]+$");
             if (re.test(number)) {
                 document.getElementById("decResult").value = hexToDec(number);
-                document.getElementById("binResult").value = hexToBin(number);
-                document.getElementById("hexResult").value = number;
+                document.getElementById("binResult").value = formatOutput(hexToBin(number));
+                document.getElementById("hexResult").value = formatOutput(number);
             } else {
                 clearOutput();
             }
