@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeric Base Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Numeric Base Converter</h1>
+
+    <h2>Convert numbers to decimal, binary and hexadecimal bases</h2>
+
+    <input
+        id="number"
+        type="text"
+        placeholder="Number to convert"
+        oninput="showResults()"
+    >
+
+    <select
+        id="base"
+        name="base"
+        required
+        onchange="showResults()"
+    >
+        <option value="" disabled selected>Base to convert from</option>
+        <option value="dec">Decimal</option>
+        <option value="bin">Binary</option>
+        <option value="hex">Hexadecimal</option>
+    </select>
+
+    <div>
+        Decimal
+        <input id="decResult" disabled><br>
+        Binary
+        <input id="binResult" disabled><br>
+        Hexadecimal
+        <input id="hexResult" disabled>
+    </div>
+    
+
+    <script src="./script.js"></script>
+</body>
+</html>
