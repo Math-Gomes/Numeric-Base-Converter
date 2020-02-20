@@ -10,34 +10,40 @@
 <body>
     <h1>Numeric Base Converter</h1>
 
-    <h2>Convert numbers to decimal, binary and hexadecimal bases</h2>
+    <h2>Convert numbers to <label>decimal</label>, <label>binary</label> and <label>hexadecimal</label> bases</h2>
 
-    <input
-        id="number"
-        type="text"
-        placeholder="Number to convert"
-        autocomplete="off"
-        oninput="showResults()"
-    >
+    <h3>Enter the number and its base</h3>
 
-    <select
-        id="base"
-        name="base"
-        required
-        onchange="showResults()"
-    >
-        <option value="" disabled selected>Base to convert from</option>
-        <option value="dec">Decimal</option>
-        <option value="bin">Binary</option>
-        <option value="hex">Hexadecimal</option>
-    </select>
+    <form>
+        <input
+            id="number"
+            type="text"
+            placeholder="Number to convert"
+            autocomplete="off"
+            oninput="showResults()"
+        >
+
+        <select
+            id="base"
+            name="base"
+            required
+            onchange="showResults()"
+        >
+            <option value="" disabled selected>Base to convert from</option>
+            <option value="dec">Decimal</option>
+            <option value="bin">Binary</option>
+            <option value="hex">Hexadecimal</option>
+        </select>
+    </form>
+
+    <h3>Results</h3>
 
     <div>
-        Decimal
-        <input id="decResult" disabled><br>
-        Binary
-        <input id="binResult" disabled><br>
-        Hexadecimal
+        <span>Decimal</span>
+        <input id="decResult" disabled>
+        <span>Binary</span>
+        <input id="binResult" disabled>
+        <span>Hexadecimal</span>
         <input id="hexResult" disabled>
     </div>
 
