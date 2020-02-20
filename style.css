@@ -36,7 +36,6 @@ form {
 div {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     gap: 10px;
 }
 
@@ -65,4 +64,8 @@ select {
 
 span {
     padding: 8px;
+}
+
+input {
+    text-align: center;
 }
