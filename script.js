@@ -132,6 +132,7 @@ function formatOutput(s, nibbleLen) {
 
         var nibble = s.substring(i - nibbleLen, i);
 
+        // Complete the nibble with zeros
         // while (nibble.length < nibbleLen) {
         //     nibble = "0" + nibble;
         // }
@@ -142,69 +143,79 @@ function formatOutput(s, nibbleLen) {
     return result;
 }
 
-function clearOutput() {
-    document.getElementById("decResult").value = "";
-    document.getElementById("binResult").value = "";
-    document.getElementById("octResult").value = "";
-    document.getElementById("hexResult").value = "";
+function clear() {
+    decResult.value = "";
+    binResult.value = "";
+    octResult.value = "";
+    hexResult.value = "";
 }
 
-function showResults() {
-    var number = document.getElementById("number").value.toUpperCase();
-    var base = document.getElementById("base").value;
+window.onload = () => {
+    const number = document.getElementById("number");
+    const base = document.getElementById("base");
+    
+    decResult = document.getElementById("decResult");
+    binResult = document.getElementById("binResult");
+    octResult = document.getElementById("octResult");
+    hexResult = document.getElementById("hexResult");
 
-    switch (base) {
+    number.oninput = base.onchange = () => {
+        n = number.value.toUpperCase();
 
-        case "dec":
-            var re = new RegExp("^[0-9]+$");
-            if (re.test(number)) {
-                document.getElementById("decResult").value = number;
-                document.getElementById("binResult").value = formatOutput(decToBin(number, 4));
-                document.getElementById("octResult").value = formatOutput(decToOct(number, 3));
-                document.getElementById("hexResult").value = formatOutput(decToHex(number, 4));
-            } else {
-                clearOutput();
+        Calculator = {
+            dec() {
+                var re = new RegExp("^[0-9]+$");
+                if (re.test(n)) {
+                    decResult.value = n;
+                    binResult.value = formatOutput(decToBin(n), 4);
+                    octResult.value = formatOutput(decToOct(n), 3);
+                    hexResult.value = formatOutput(decToHex(n), 4);
+                } else {
+                    clear();
+                }
+            },
+
+            bin() {
+                var re = new RegExp("^[0-1]+$");
+                if (re.test(n)) {
+                    decResult.value = binToDec(n);
+                    binResult.value = formatOutput(n, 4);
+                    octResult.value = formatOutput(binToOct(n), 3);
+                    hexResult.value = formatOutput(binToHex(n), 4);
+                } else {
+                    clear();
+                }
+            },
+
+            oct() {
+                var re = new RegExp("^[0-8]+$");
+                if (re.test(n)) {
+                    decResult.value = octToDec(n);
+                    binResult.value = formatOutput(octToBin(n), 4);
+                    octResult.value = formatOutput(n, 3);
+                    hexResult.value = formatOutput(octToHex(n), 4);
+                } else {
+                    clear();
+                }
+            },
+
+            hex() {
+                var re = new RegExp("^[0-9a-fA-F]+$");
+                if (re.test(n)) {
+                    decResult.value = hexToDec(n);
+                    binResult.value = formatOutput(hexToBin(n), 4);
+                    octResult.value = formatOutput(hexToOct(n), 3);
+                    hexResult.value = formatOutput(n, 4);
+                } else {
+                    clear();
+                }
             }
-            break;
+        }
 
-        case "bin":
-            var re = new RegExp("^[0-1]+$");
-            if (re.test(number)) {
-                document.getElementById("decResult").value = binToDec(number);
-                document.getElementById("binResult").value = formatOutput(number, 4);
-                document.getElementById("octResult").value = formatOutput(binToOct(number, 3));
-                document.getElementById("hexResult").value = formatOutput(binToHex(number, 4));
-            } else {
-                clearOutput();
-            }
-            break;
-
-        case "oct":
-            var re = new RegExp("^[0-8]+$");
-            if (re.test(number)) {
-                document.getElementById("decResult").value = octToDec(number);
-                document.getElementById("binResult").value = formatOutput(octToBin(number), 4);
-                document.getElementById("octResult").value = formatOutput(number, 3);
-                document.getElementById("hexResult").value = formatOutput(octToHex(number), 4);
-            } else {
-                clearOutput();
-            }
-            break;
-
-        case "hex":
-            var re = new RegExp("^[0-9a-fA-F]+$");
-            if (re.test(number)) {
-                document.getElementById("decResult").value = hexToDec(number);
-                document.getElementById("binResult").value = formatOutput(hexToBin(number), 4);
-                document.getElementById("octResult").value = formatOutput(hexToOct(number), 3);
-                document.getElementById("hexResult").value = formatOutput(number, 4);
-            } else {
-                clearOutput();
-            }
-            break;
-
-        default:
-            clearOutput();
+        if (Object.keys(Calculator).includes(base.value)) {
+            Calculator[base.value]();
+        } else {
+            clear();
+        }
     }
-
 }

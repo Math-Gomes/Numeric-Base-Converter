@@ -16,27 +16,42 @@ body {
     color: #000000bb;
 }
 
+header {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-bottom: 40px;
+}
+
 label {
     color: rgb(41, 117, 241);
 }
 
-form, div {
-    max-width: 500px;
-    margin: 35px auto;
+#form, #results {
+    max-width: 600px;
+    margin: 0 auto 40px;
     width: 90%;
+    display: grid;
+    gap: 10px;
 }
 
-form {
+#form {
+    margin-top: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     align-items: center;
 }
 
-div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+#results {
+    grid-template-columns: 1fr 2fr;
 }
 
 input {

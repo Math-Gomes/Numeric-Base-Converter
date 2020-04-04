@@ -8,47 +8,40 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Numeric Base Converter</h1>
-
-    <h2>Convert numbers to <label>decimal</label>, <label>binary</label>, <label>octal</label> and <label>hexadecimal</label> bases</h2>
-
-    <h3>Enter the number and its base</h3>
-
-    <form>
-        <input
-            id="number"
-            type="text"
-            placeholder="Number to convert"
-            autocomplete="off"
-            oninput="showResults()"
-        >
-
-        <select
-            id="base"
-            name="base"
-            required
-            onchange="showResults()"
-        >
-            <option value="" disabled selected>Base to convert from</option>
-            <option value="dec">Decimal</option>
-            <option value="bin">Binary</option>
-            <option value="oct">Octal</option>
-            <option value="hex">Hexadecimal</option>
-        </select>
-    </form>
-
-    <h3>Results</h3>
-
-    <div>
-        <span>Decimal</span>
-        <input id="decResult" disabled>
-        <span>Binary</span>
-        <input id="binResult" disabled>
-        <span>Octal</span>
-        <input id="octResult" disabled>
-        <span>Hexadecimal</span>
-        <input id="hexResult" disabled>
+    <header>
+        <h1>Numeric Base Converter</h1>
+        <h2>Convert numbers to <label>decimal</label>, <label>binary</label>, <label>octal</label> and <label>hexadecimal</label> bases</h2>
+    </header>
+    
+    
+    <div id="container">
+        <h3>Enter the number and its base</h3>
+        <div id="form">
+            <input id="number" type="text" placeholder="Number to convert" autocomplete="off">
+    
+            <select id="base" name="base" required>
+                <option value="" disabled selected>Base to convert from</option>
+                <option value="dec">Decimal</option>
+                <option value="bin">Binary</option>
+                <option value="oct">Octal</option>
+                <option value="hex">Hexadecimal</option>
+            </select>
+        </div>
+    
+        <h3>Results</h3>
+    
+        <div id="results">
+            <span>Decimal</span>
+            <input id="decResult" disabled>
+            <span>Binary</span>
+            <input id="binResult" disabled>
+            <span>Octal</span>
+            <input id="octResult" disabled>
+            <span>Hexadecimal</span>
+            <input id="hexResult" disabled>
+        </div>
     </div>
+    
 
     <script src="./script.js"></script>
 </body>
