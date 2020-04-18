@@ -84,8 +84,9 @@ select:required:invalid {
     margin: 40px auto;
 }
 
-span, .result {
+.base-name, .result {
     padding: 8px;
+    border-radius: 4px;
     display: inline-block;
 }
 
@@ -94,17 +95,17 @@ span, .result {
     margin-bottom: 10px;
 }
 
-span {
+.base-name {
     width: 20%;
     margin-left: auto;
     margin-right: 2%;
     font-weight: bold;
     text-transform: uppercase;
+    background-color: #e6ecf0;
 }
 
 .result {
     width: 80%;
-    border-radius: 4px;
     text-align: center;
     justify-content: center;
     background-color: #ffffff;
