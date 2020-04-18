@@ -144,10 +144,10 @@ function formatOutput(s, nibbleLen) {
 }
 
 function clear() {
-    decResult.value = "";
-    binResult.value = "";
-    octResult.value = "";
-    hexResult.value = "";
+    decResult.innerText = "";
+    binResult.innerText = "";
+    octResult.innerText = "";
+    hexResult.innerText = "";
 }
 
 window.onload = () => {
@@ -166,10 +166,10 @@ window.onload = () => {
             dec() {
                 var re = new RegExp("^[0-9]+$");
                 if (re.test(n)) {
-                    decResult.value = n;
-                    binResult.value = formatOutput(decToBin(n), 4);
-                    octResult.value = formatOutput(decToOct(n), 3);
-                    hexResult.value = formatOutput(decToHex(n), 4);
+                    decResult.innerText = n;
+                    binResult.innerText = formatOutput(decToBin(n), 4);
+                    octResult.innerText = formatOutput(decToOct(n), 3);
+                    hexResult.innerText = formatOutput(decToHex(n), 4);
                 } else {
                     clear();
                 }
@@ -178,10 +178,10 @@ window.onload = () => {
             bin() {
                 var re = new RegExp("^[0-1]+$");
                 if (re.test(n)) {
-                    decResult.value = binToDec(n);
-                    binResult.value = formatOutput(n, 4);
-                    octResult.value = formatOutput(binToOct(n), 3);
-                    hexResult.value = formatOutput(binToHex(n), 4);
+                    decResult.innerText = binToDec(n);
+                    binResult.innerText = formatOutput(n, 4);
+                    octResult.innerText = formatOutput(binToOct(n), 3);
+                    hexResult.innerText = formatOutput(binToHex(n), 4);
                 } else {
                     clear();
                 }
@@ -190,10 +190,10 @@ window.onload = () => {
             oct() {
                 var re = new RegExp("^[0-8]+$");
                 if (re.test(n)) {
-                    decResult.value = octToDec(n);
-                    binResult.value = formatOutput(octToBin(n), 4);
-                    octResult.value = formatOutput(n, 3);
-                    hexResult.value = formatOutput(octToHex(n), 4);
+                    decResult.innerText = octToDec(n);
+                    binResult.innerText = formatOutput(octToBin(n), 4);
+                    octResult.innerText = formatOutput(n, 3);
+                    hexResult.innerText = formatOutput(octToHex(n), 4);
                 } else {
                     clear();
                 }
@@ -202,10 +202,10 @@ window.onload = () => {
             hex() {
                 var re = new RegExp("^[0-9a-fA-F]+$");
                 if (re.test(n)) {
-                    decResult.value = hexToDec(n);
-                    binResult.value = formatOutput(hexToBin(n), 4);
-                    octResult.value = formatOutput(hexToOct(n), 3);
-                    hexResult.value = formatOutput(n, 4);
+                    decResult.innerText = hexToDec(n);
+                    binResult.innerText = formatOutput(hexToBin(n), 4);
+                    octResult.innerText = formatOutput(hexToOct(n), 3);
+                    hexResult.innerText = formatOutput(n, 4);
                 } else {
                     clear();
                 }
