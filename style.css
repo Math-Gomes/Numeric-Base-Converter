@@ -24,6 +24,9 @@ body {
 }
 
 h1 {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     margin: 40px 20px;
 }
 
