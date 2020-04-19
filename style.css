@@ -1,15 +1,25 @@
+html {
+    --bg: #ecf0f1;
+    --bg-container: #d8e0e4;
+    --bg-basename: #e6ecf0;
+    --bg-io: #ffffff;
+    --color-text: #000000cc;
+    --color-highlight: #1e90ff;
+    --teste: rgb(46, 50, 58);
+}
+
 html, body {
     margin: 0;
 }
 
 body {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    height: 100vh;
     font-family: 'Roboto', sans-serif;
-    background-color: #ecf0f1;
     text-align: center;
-    color: #000000cc;
+    color: var(--color-text);
+    background-color: var(--bg);
 }
 
 .container {
@@ -18,7 +28,7 @@ body {
     max-width: 900px;
     border-radius: 8px;
     margin: 5% auto;
-    background-color:#d8e0e4;
+    background-color: var(--bg-container);
     align-items: center;
     justify-content: center;
 }
@@ -35,7 +45,7 @@ h2 {
 }
 
 label {
-    color: rgb(30, 144, 255);
+    color: var(--color-highlight);
 }
 
 .in, .out {
@@ -56,7 +66,8 @@ input, select {
     border: none;
     text-align: center;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: var(--bg-io);
+    color: var(--color-text);
 }
 
 input {
@@ -70,7 +81,7 @@ select {
 }
 
 option {
-    color: #000000cc;
+    color: var(--color-text);
 }
 
 option[value=""][disabled] {
@@ -79,7 +90,7 @@ option[value=""][disabled] {
 
 input::placeholder,
 select:required:invalid {
-    color: gray;
+    color: gray; /* Talvez mudar aqui depois */
     text-transform: none;
 }
 
@@ -104,13 +115,13 @@ select:required:invalid {
     margin-right: 2%;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #e6ecf0;
+    background-color: var(--bg-basename);
 }
 
 .result {
     width: 80%;
     text-align: center;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: var(--bg-io);
     margin-right: auto;
 }
