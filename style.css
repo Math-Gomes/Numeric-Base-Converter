@@ -6,6 +6,8 @@ html {
     --color-text: #000000cc;
     --color-highlight: #1e90ff;
     --teste: rgb(46, 50, 58);
+
+    --transition-time: 1s;
 }
 
 html, body {
@@ -31,6 +33,7 @@ body {
     background-color: var(--bg-container);
     align-items: center;
     justify-content: center;
+    transition: var(--transition-time);
 }
 
 h1 {
