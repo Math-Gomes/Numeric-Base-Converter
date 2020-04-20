@@ -7,7 +7,7 @@ html {
     --color-highlight: #1e90ff;
     --teste: rgb(46, 50, 58);
 
-    --transition-time: 1s;
+    --transition-time: .15s;
 }
 
 html, body {
