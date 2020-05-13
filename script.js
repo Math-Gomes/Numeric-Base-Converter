@@ -1,53 +1,17 @@
 function decToBin(n) {
-    if (n == 0) return "0";
-
-    var result = "";
-
-    while (n > 0) {
-        result = (n % 2) + result;
-        n = n >> 1;
-    }
-
-    return result;
+    return n.toString(2);
 }
 
 function decToOct(n) {
-    if (n == 0) return "0";
-
-    var result = "";
-
-    while (n > 0) {
-        result = (n % 8) + result;
-        n = n >> 3;
-    }
-
-    return result;
+    return n.toString(8);
 }
 
 function decToHex(n) {
-    if (n == 0) return "0";
-
-    var result = "";
-    var values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
-
-    while (n > 0) {
-        result = values[n % 16] + result;
-        n = n >> 4;
-    }
-
-    return result;
+    return n.toString(16);
 }
 
 function binToDec(n) {
-    var result = 0;
-    var expoent = n.length - 1;
-    
-    for (var i = 0; i < n.length; i++) {
-        result += n[i] * (2 ** expoent);
-        expoent--;
-    }
-
-    return result;
+    return parseInt(n, 2);
 }
 
 function binToOct(n) {
@@ -59,36 +23,11 @@ function binToHex(n) {
 }
 
 function hexToDec(n) {
-    return binToDec(hexToBin(n));
+    return parseInt(n, 16);
 }
 
 function hexToBin(n) {
-    var result = "";
-
-    const hex = {
-        '0': '0000',
-        '1': '0001',
-        '2': '0010',
-        '3': '0011',
-        '4': '0100',
-        '5': '0101',
-        '6': '0110',
-        '7': '0111',
-        '8': '1000',
-        '9': '1001',
-        'A': '1010',
-        'B': '1011',
-        'C': '1100',
-        'D': '1101',
-        'E': '1110',
-        'F': '1111'
-    };
-
-    for (var i = 0; i < n.length; i++) {
-        result += hex[n[i]];
-    }
-
-    return result;
+    return decToBin(hexToDec(n));
 }
 
 function hexToOct(n) {
@@ -96,15 +35,7 @@ function hexToOct(n) {
 }
 
 function octToDec(n) {
-    var result = 0;
-    var expoent = n.length - 1;
-    
-    for (var i = 0; i < n.length; i++) {
-        result += n[i] * (8 ** expoent);
-        expoent--;
-    }
-
-    return result;
+    return parseInt(n, 8);
 }
 
 function octToBin(n) {
@@ -125,6 +56,8 @@ function octToHex(n) {
  */
 function formatOutput(s, nibbleLen) {
     if (s == 0) return "0";
+
+    s = s.toString();
 
     var result = "";
 
@@ -166,6 +99,7 @@ window.onload = () => {
             dec() {
                 var re = new RegExp("^[0-9]+$");
                 if (re.test(n)) {
+                    n = parseInt(n);
                     decResult.innerText = n;
                     binResult.innerText = formatOutput(decToBin(n), 4);
                     octResult.innerText = formatOutput(decToOct(n), 3);
@@ -212,10 +146,6 @@ window.onload = () => {
             }
         }
 
-        if (Object.keys(Calculator).includes(base.value)) {
-            Calculator[base.value]();
-        } else {
-            clear();
-        }
+        Object.keys(Calculator).includes(base.value) ? Calculator[base.value]() : clear();
     }
 }

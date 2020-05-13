@@ -15,8 +15,10 @@ html, body {
 }
 
 body {
-    height: 100vh;
+    height: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     text-align: center;
@@ -93,7 +95,7 @@ option[value=""][disabled] {
 
 input::placeholder,
 select:required:invalid {
-    color: gray; /* Talvez mudar aqui depois */
+    color: gray;
     text-transform: none;
 }
 

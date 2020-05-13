@@ -1,8 +1,6 @@
 const html = document.querySelector("html");
 const checkbox = document.querySelector("input[name=theme]");
 
-console.log(checkbox)
-
 const getStyle = (element, style) => 
     window
         .getComputedStyle(element)
