@@ -86,7 +86,8 @@ function clear() {
 window.onload = () => {
     const number = document.getElementById("number");
     const base = document.getElementById("base");
-    
+    const results = [... document.getElementsByClassName("result")];
+
     decResult = document.getElementById("dec-result");
     binResult = document.getElementById("bin-result");
     octResult = document.getElementById("oct-result");
@@ -126,5 +127,24 @@ window.onload = () => {
         }
 
         Object.keys(Calculator).includes(base.value) ? Calculator[base.value]() : clear();
+    }
+
+    for (var r of results) {
+        r.addEventListener("click", function copyToClipboard({ target }) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(target);
+                range.select().createTextRange();
+                document.execCommand("copy");
+                // alert("Text has been copied!");
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(target);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                // alert("Text has been copied!");
+            }
+        });
     }
 }

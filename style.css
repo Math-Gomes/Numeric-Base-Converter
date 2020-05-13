@@ -134,3 +134,8 @@ select:required:invalid {
 .result:hover {
     background-color: var(--bg);
 }
+
+button {
+    border: none;
+    color: var(--color-text);
+}
