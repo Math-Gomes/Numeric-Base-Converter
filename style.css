@@ -5,7 +5,6 @@ html {
     --bg-io: #ffffff;
     --color-text: #000000cc;
     --color-highlight: #1e90ff;
-    --teste: rgb(46, 50, 58);
 
     --transition-time: .15s;
 }
@@ -124,9 +123,14 @@ select:required:invalid {
 }
 
 .result {
+    cursor: pointer;
     width: 80%;
     text-align: center;
     justify-content: center;
-    background-color: var(--bg-io);
+    background-color: var(--bg-basename);
     margin-right: auto;
+}
+
+.result:hover {
+    background-color: var(--bg);
 }
