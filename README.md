@@ -1,3 +1,7 @@
+## Notes
+
+Copy to clipboard não está funcionando no `Mozilla Firefox`
+
 ## Links
 
 [Dark Mode com CSS e JavaScript](https://www.youtube.com/watch?v=BvhYm0BOLvA)
