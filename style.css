@@ -115,9 +115,12 @@ select:required:invalid {
 }
 
 .base-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 20%;
     margin-left: auto;
-    margin-right: 2%;
+    margin-right: 10px;
     font-weight: bold;
     text-transform: uppercase;
     background-color: var(--bg-basename);
