@@ -147,7 +147,9 @@ window.onload = () => {
         // Set tooltip text
         r.addEventListener("click", (e) => {
             copyToClipboard(e.target);
+            console.log(e.target.ariaLabel)
             e.target.ariaLabel = "Copied!";
+            console.log(e.target.ariaLabel)
         });
 
         // Reset tooltip text
