@@ -83,6 +83,32 @@ function clear() {
     hexResult.innerText = "";
 }
 
+function setOutput(re, dec, bin, oct, hex) {
+    if ((new RegExp(re)).test(n)) {
+        decResult.innerText = dec;
+        binResult.innerText = formatOutput(bin, 4);
+        octResult.innerText = formatOutput(oct, 3);
+        hexResult.innerText = formatOutput(hex, 4);
+    } else {
+        clear();
+    }
+}
+
+function copyToClipboard({ target }) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(target);
+        range.select().createTextRange();
+        document.execCommand("copy");
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+    }
+}
+
 window.onload = () => {
     const number = document.getElementById("number");
     const base = document.getElementById("base");
@@ -91,60 +117,31 @@ window.onload = () => {
     decResult = document.getElementById("dec-result");
     binResult = document.getElementById("bin-result");
     octResult = document.getElementById("oct-result");
-    hexResult = document.getElementById("hex-result");
+    hexResult = document.getElementById("hex-result");  
 
-    const setOutput = (re, d, b, o, h) => {
-        if ((new RegExp(re)).test(n)) {
-            decResult.innerText = d;
-            binResult.innerText = formatOutput(b, 4);
-            octResult.innerText = formatOutput(o, 3);
-            hexResult.innerText = formatOutput(h, 4);
-        } else {
-            clear();
+    const Calculator = {
+        dec() {
+            n = parseInt(n);
+            setOutput("^[0-9]+$", n, decToBin(n), decToOct(n), decToHex(n));
+        },
+
+        bin() {
+            setOutput("^[0-1]+$", binToDec(n), n, binToOct(n), binToHex(n));
+        },
+
+        oct() {
+            setOutput("^[0-8]+$", octToDec(n), octToBin(n), n, octToHex(n));
+        },
+
+        hex() {
+            setOutput("^[0-9a-fA-F]+$", hexToDec(n), hexToBin(n), hexToOct(n), n);
         }
     }
 
     number.oninput = base.onchange = () => {
         n = number.value.toUpperCase();
-
-        Calculator = {
-            dec() {
-                n = parseInt(n);
-                setOutput("^[0-9]+$", n, decToBin(n), decToOct(n), decToHex(n));
-            },
-
-            bin() {
-                setOutput("^[0-1]+$", binToDec(n), n, binToOct(n), binToHex(n));
-            },
-
-            oct() {
-                setOutput("^[0-8]+$", octToDec(n), octToBin(n), n, octToHex(n));
-            },
-
-            hex() {
-                setOutput("^[0-9a-fA-F]+$", hexToDec(n), hexToBin(n), hexToOct(n), n);
-            }
-        }
-
         Object.keys(Calculator).includes(base.value) ? Calculator[base.value]() : clear();
     }
 
-    for (var r of results) {
-        r.addEventListener("click", function copyToClipboard({ target }) {
-            if (document.selection) {
-                var range = document.body.createTextRange();
-                range.moveToElementText(target);
-                range.select().createTextRange();
-                document.execCommand("copy");
-                // alert("Text has been copied!");
-            } else if (window.getSelection) {
-                var range = document.createRange();
-                range.selectNode(target);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand("copy");
-                // alert("Text has been copied!");
-            }
-        });
-    }
+    results.map(r => r.onclick = copyToClipboard);
 }
