@@ -138,5 +138,6 @@ select:required:invalid {
 
 button {
     border: none;
+    outline: none;
     color: var(--color-text);
 }
