@@ -130,7 +130,6 @@ select:required:invalid {
     justify-content: center;
     background-color: var(--bg-basename);
     margin-right: auto;
-    /* user-select: none; */
 }
 
 .result:hover {
@@ -141,4 +140,13 @@ button {
     border: none;
     outline: none;
     color: var(--color-text);
+}
+
+.result::selection {
+    background: transparent;
+}
+
+.result:active {
+    transition: 0.15s;
+    background: var(--bg-io);
 }
