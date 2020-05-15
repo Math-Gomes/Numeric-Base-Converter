@@ -94,15 +94,15 @@ function setOutput(re, dec, bin, oct, hex) {
     }
 }
 
-function copyToClipboard({ target }) {
+function copyToClipboard(element) {
     if (document.selection) {
         var range = document.body.createTextRange();
-        range.moveToElementText(target);
+        range.moveToElementText(element);
         range.select().createTextRange();
         document.execCommand("copy");
     } else if (window.getSelection) {
         var range = document.createRange();
-        range.selectNode(target);
+        range.selectNode(element);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
         document.execCommand("copy");
@@ -143,5 +143,15 @@ window.onload = () => {
         Object.keys(Calculator).includes(base.value) ? Calculator[base.value]() : clear();
     }
 
-    results.map(r => r.onclick = copyToClipboard);
+    results.map(r =>
+        r.addEventListener("click", (e) => {
+            copyToClipboard(e.target);
+            e.target.ariaLabel = "Copied!";
+        },
+
+        r.addEventListener("mouseout", async (e) => {
+            await new Promise(p => setTimeout(p, 500));
+            e.target.ariaLabel = "Click to copy";
+        })
+    ));
 }

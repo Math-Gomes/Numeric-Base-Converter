@@ -130,6 +130,7 @@ select:required:invalid {
     justify-content: center;
     background-color: var(--bg-basename);
     margin-right: auto;
+    /* user-select: none; */
 }
 
 .result:hover {

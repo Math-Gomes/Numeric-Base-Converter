@@ -6,7 +6,7 @@
     <title>Numeric Base Converter</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="switch.css">
-    <link rel="stylesheet" href="tooltip.css">
+    <link rel="stylesheet" href="balloon.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -39,30 +39,46 @@
 
             <div class="result-container">
                 <div class="base-name">Dec</div>
-                <button class="result tooltip" id="dec-result">
-                    <!-- <span class="tooltiptext">Click to copy</span> -->
-                </button>
+                <button
+                    id="dec-result"
+                    class="result"
+                    aria-label="Click to copy"
+                    data-balloon-pos="up-right"
+                    data-balloon-nofocus
+                >
             </div>
             
             <div class="result-container">
                 <div class="base-name">Bin</div>
-                <button class="result tooltip" id="bin-result">
-                    <!-- <span class="tooltiptext">Click to copy</span> -->
-                </button>
+                <button
+                    id="bin-result"
+                    class="result"
+                    aria-label="Click to copy"
+                    data-balloon-pos="up-right"
+                    data-balloon-nofocus
+                >
             </div>
             
             <div class="result-container">
                 <div class="base-name">Oct</div>
-                <button class="result tooltip" id="oct-result">
-                    <!-- <span class="tooltiptext">Click to copy</span> -->
-                </button>
+                <button
+                    id="oct-result"
+                    class="result"
+                    aria-label="Click to copy"
+                    data-balloon-pos="up-right"
+                    data-balloon-nofocus
+                >
             </div>
 
             <div class="result-container">
                 <div class="base-name">Hex</div>
-                <button class="result tooltip" id="hex-result">
-                    <!-- <span class="tooltiptext">Click to copy</span> -->
-                </button>
+                <button
+                    id="hex-result"
+                    class="result"
+                    aria-label="Click to copy"
+                    data-balloon-pos="up-right"
+                    data-balloon-nofocus
+                >
             </div>
         </div>
     </div>
