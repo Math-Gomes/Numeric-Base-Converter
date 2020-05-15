@@ -143,15 +143,17 @@ window.onload = () => {
         Object.keys(Calculator).includes(base.value) ? Calculator[base.value]() : clear();
     }
 
-    results.map(r =>
+    results.map(r => {
+        // Set tooltip text
         r.addEventListener("click", (e) => {
             copyToClipboard(e.target);
             e.target.ariaLabel = "Copied!";
-        },
+        });
 
+        // Reset tooltip text
         r.addEventListener("mouseout", async (e) => {
             await new Promise(p => setTimeout(p, 500));
             e.target.ariaLabel = "Click to copy";
-        })
-    ));
+        });
+    });
 }
