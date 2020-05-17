@@ -13,6 +13,8 @@ const lightTheme = {
     bgIO: getStyle(html, "--bg-io"),
     colorText: getStyle(html, "--color-text"),
     colorHighlight: getStyle(html, "--color-highlight"),
+    colorScroll: getStyle(html, "--color-scroll"),
+    colorScrollHover: getStyle(html, "--color-scrollhover"),
 }
 
 const darkTheme = {
@@ -22,6 +24,8 @@ const darkTheme = {
     bgIO: "#2e323a",
     colorText: "#ffffff",
     colorHighlight: "#5294e2",
+    colorScroll: "#30343d",
+    colorScrollHover: "#21242b"
 }
 
 const transformKey = key => 

@@ -5,8 +5,9 @@ html {
     --bg-io: #ffffff;
     --color-text: #000000cc;
     --color-highlight: #1e90ff;
-
-    --transition-time: .15s;
+    --color-scroll: #aeb5b9;
+    --color-scrollhover: #9aa0a3;
+    --transition-time: .2s;
 }
 
 html, body {
@@ -35,7 +36,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: var(--transition-time);
-    box-shadow: 10px 10px 6px -6px rgba(0,0,0,0.13);
+    box-shadow: 10px 10px 6px -6px rgba(0, 0, 0, 0.13);
 }
 
 h1 {
@@ -93,8 +94,7 @@ option[value=""][disabled] {
     display: none;
 }
 
-input::placeholder,
-select:required:invalid {
+input::placeholder, select:required:invalid {
     color: gray;
     text-transform: none;
 }
@@ -152,4 +152,20 @@ button {
 .result:active {
     transition: 0.15s;
     background: var(--bg-io);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-scroll);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-scrollhover);
 }
